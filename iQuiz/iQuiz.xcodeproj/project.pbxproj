@@ -13,6 +13,7 @@
 		9D917E5E1DCB511B000FB22A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D917E5C1DCB511B000FB22A /* LaunchScreen.storyboard */; };
 		9DE0454A1DCC1C2D00F3A48C /* iQuizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE045491DCC1C2D00F3A48C /* iQuizTableViewController.swift */; };
 		9DE0454C1DCC273F00F3A48C /* iQuizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0454B1DCC273F00F3A48C /* iQuizTableViewCell.swift */; };
+		9DE0454E1DCC44E800F3A48C /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0454D1DCC44E800F3A48C /* Questions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9D917E5F1DCB511B000FB22A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DE045491DCC1C2D00F3A48C /* iQuizTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iQuizTableViewController.swift; sourceTree = "<group>"; };
 		9DE0454B1DCC273F00F3A48C /* iQuizTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iQuizTableViewCell.swift; sourceTree = "<group>"; };
+		9DE0454D1DCC44E800F3A48C /* Questions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				9D917E531DCB511B000FB22A /* AppDelegate.swift */,
 				9DE045491DCC1C2D00F3A48C /* iQuizTableViewController.swift */,
 				9DE0454B1DCC273F00F3A48C /* iQuizTableViewCell.swift */,
+				9DE0454D1DCC44E800F3A48C /* Questions.swift */,
 				9D917E571DCB511B000FB22A /* Main.storyboard */,
 				9D917E5A1DCB511B000FB22A /* Assets.xcassets */,
 				9D917E5C1DCB511B000FB22A /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D917E541DCB511B000FB22A /* AppDelegate.swift in Sources */,
+				9DE0454E1DCC44E800F3A48C /* Questions.swift in Sources */,
 				9DE0454C1DCC273F00F3A48C /* iQuizTableViewCell.swift in Sources */,
 				9DE0454A1DCC1C2D00F3A48C /* iQuizTableViewController.swift in Sources */,
 			);

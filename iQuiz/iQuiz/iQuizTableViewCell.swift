@@ -11,6 +11,7 @@ import UIKit
 class iQuizTableViewCell: UITableViewCell {
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var icon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

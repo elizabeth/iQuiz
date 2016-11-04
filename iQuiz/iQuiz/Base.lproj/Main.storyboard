@@ -44,6 +44,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="YCl-Ua-I9v" id="FQa-G9-Sod"/>
+                                    <outlet property="icon" destination="VVW-UT-FuB" id="Qz8-hH-seD"/>
                                     <outlet property="subjectLabel" destination="qY4-hW-mLw" id="aGg-8p-0P8"/>
                                 </connections>
                             </tableViewCell>

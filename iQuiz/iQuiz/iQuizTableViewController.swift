@@ -9,8 +9,7 @@
 import UIKit
 
 class iQuizTableViewController: UITableViewController {
-
-    var model = ["Mathematics", "Marvel Super Heroes", "Science"]
+    var model = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +24,8 @@ class iQuizTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let questions = Questions.shared
+        model = [questions.mathematics, questions.marvel, questions.science]
         self.tableView.reloadData()
     }
 
@@ -54,8 +55,12 @@ class iQuizTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectIdentifier", for: indexPath) as! iQuizTableViewCell
 
+        let set = model[indexPath.row]
+        
          //Configure the cell...
-        cell.subjectLabel.text = model[indexPath.row]
+        cell.subjectLabel.text = set["subject"]
+        cell.descriptionLabel.text = set["descr"]
+        cell.icon.image = UIImage(named: set["icon"]!)
         
         return cell
     }
