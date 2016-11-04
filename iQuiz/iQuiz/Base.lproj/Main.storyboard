@@ -46,6 +46,7 @@
                                     <outlet property="descriptionLabel" destination="YCl-Ua-I9v" id="FQa-G9-Sod"/>
                                     <outlet property="icon" destination="VVW-UT-FuB" id="Qz8-hH-seD"/>
                                     <outlet property="subjectLabel" destination="qY4-hW-mLw" id="aGg-8p-0P8"/>
+                                    <segue destination="6pb-pI-i97" kind="show" id="epj-eR-CGu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -67,6 +68,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tv-U3-Nv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-623.20000000000005" y="134.48275862068968"/>
+        </scene>
+        <!--Question View Controller-->
+        <scene sceneID="aD0-xF-Lcm">
+            <objects>
+                <viewController id="6pb-pI-i97" customClass="QuestionViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RZn-m5-FMo"/>
+                        <viewControllerLayoutGuide type="bottom" id="foU-XZ-ngz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JB9-PL-Fuc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FYo-lk-Ogg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="151" y="134"/>
+        </scene>
+        <!--Answer View Controller-->
+        <scene sceneID="jDM-o8-jBm">
+            <objects>
+                <viewController id="uF7-sS-73t" customClass="AnswerViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u5s-Sc-pIY"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rgc-nD-zxz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cT8-Po-nNS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IN5-Kn-bzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="849" y="134"/>
+        </scene>
+        <!--Finished View Controller-->
+        <scene sceneID="lvx-ye-A41">
+            <objects>
+                <viewController id="zWm-sm-swL" customClass="FinishedViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T0o-2X-SGI"/>
+                        <viewControllerLayoutGuide type="bottom" id="icA-oe-kaL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FGg-2L-yD5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C3d-0d-viR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1554" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Ul-aK-KJE">
