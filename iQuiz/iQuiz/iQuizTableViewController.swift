@@ -10,7 +10,7 @@ import UIKit
 
 class iQuizTableViewController: UITableViewController {
     var model = [[String: String]]()
-    var clicked : String = ""
+    var index : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +35,13 @@ class iQuizTableViewController: UITableViewController {
     }
     
     // This function is called before the segue
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // get a reference to the second view controller
-//        let questionViewController = segue.destination as! QuestionViewController
-//        
-//        // set a variable in the second view controller with the data to pass
-//        questionViewController.subject = clicked
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // get a reference to the second view controller
+        let questionViewController = segue.destination as! QuestionViewController
+        
+        // set a variable in the second view controller with the data to pass
+        questionViewController.index = index
+    }
 
     @IBAction func viewSettings(_ sender: AnyObject) {
         let alert = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: UIAlertControllerStyle.alert)
@@ -74,11 +74,11 @@ class iQuizTableViewController: UITableViewController {
         return cell
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) {
-        let set = model[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        index = indexPath.row
         
-        clicked = set["descr"]!
-        print(clicked)
+        // Start segue with index of cell clicked
+        self.performSegue(withIdentifier: "toQuestion", sender: self)
     }
 
     /*

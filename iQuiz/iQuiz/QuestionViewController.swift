@@ -9,10 +9,11 @@
 import UIKit
 
 class QuestionViewController: UIViewController {
-
+    var index : Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(index)
         // Do any additional setup after loading the view.
     }
 

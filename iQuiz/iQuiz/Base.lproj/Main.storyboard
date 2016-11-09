@@ -37,7 +37,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVW-UT-FuB">
-                                            <frame key="frameInset" minX="3.75%" minY="7.04%" width="21.88%" height="84.51%"/>
+                                            <frame key="frameInset" minX="4.06%" minY="7.04%" width="21.56%" height="84.51%"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -46,7 +46,6 @@
                                     <outlet property="descriptionLabel" destination="YCl-Ua-I9v" id="FQa-G9-Sod"/>
                                     <outlet property="icon" destination="VVW-UT-FuB" id="Qz8-hH-seD"/>
                                     <outlet property="subjectLabel" destination="qY4-hW-mLw" id="aGg-8p-0P8"/>
-                                    <segue destination="6pb-pI-i97" kind="show" id="epj-eR-CGu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -64,6 +63,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="6pb-pI-i97" kind="show" identifier="toQuestion" id="TtQ-5N-3rZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tv-U3-Nv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
