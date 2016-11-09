@@ -8,12 +8,34 @@
 
 import UIKit
 
-class QuestionViewController: UIViewController {
-    var index : Int = 0
+class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    var questions = [[String: Any]]()
+    var pickerAnswers = [String]()
+    var hasNext = false
+    var score = ["total": 0, "index": 0, "answer": 0, "hasNext": 0]
+    @IBOutlet weak var question: UILabel!
+    @IBOutlet weak var picker: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(index)
+        
+        self.picker.delegate = self
+        self.picker.dataSource = self
+        
+        let index = score["index"]!
+        outer: for i in index..<questions.count {
+            if i == index {
+                question.text = questions[i]["text"] as! String?
+                score["answer"] = Int(questions[i]["answer"] as! String)
+                score["hasNext"] = 0
+                pickerAnswers = (questions[i]["answers"] as! [String]?)!
+            } else {
+                score["hasNext"] = 1
+                break outer
+            }
+        }
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -22,7 +44,44 @@ class QuestionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // The number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // The data to return for the row and component (column) that's being passed in
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return pickerAnswers[row]
+//    }
+//    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerAnswers.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 44))
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.text = pickerAnswers[row]
+        label.sizeToFit()
+        return label
+    }
 
+    // Capture the picker view selection
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // This method is triggered whenever the user makes a change to the picker selection.
+        // The parameter named row and component represents what was selected.
+        score["answer"] = row
+    }
+    
+
+    @IBAction func submit(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "toAnswer", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
