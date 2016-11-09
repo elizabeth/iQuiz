@@ -9,11 +9,15 @@
 import UIKit
 
 class FinishedViewController: UIViewController {
-
+    var score = [String: Int]()
+    @IBOutlet weak var descriptive: UILabel!
+    @IBOutlet weak var totalScore: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        totalScore.text = "\(String(score["correct"]!)) / \(score["total"]!)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +25,16 @@ class FinishedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // save data here for part 3
+        // for now do nothing
+    }
+    
 
+    @IBAction func next(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "toMain", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -11,8 +11,7 @@ import UIKit
 class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var questions = [[String: Any]]()
     var pickerAnswers = [String]()
-    var hasNext = false
-    var score = ["total": 0, "index": 0, "answer": 0, "hasNext": 0]
+    var score = ["correct": 0, "total": 1, "index": 0, "answer": 0, "hasNext": 0]
     @IBOutlet weak var question: UILabel!
     @IBOutlet weak var picker: UIPickerView!
     
@@ -33,8 +32,11 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 score["hasNext"] = 1
                 break outer
             }
+            
+            if i + 1 == questions.count {
+                score["hasNext"] = 0
+            }
         }
-        
         
         // Do any additional setup after loading the view.
     }
@@ -43,7 +45,17 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
+    // This function is called before the segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // get a reference to the second view controller
+        let answerViewController = segue.destination as! AnswerViewController
+        
+        // set a variable in the second view controller with the data to pass
+        answerViewController.questions = questions
+        answerViewController.score = score
+    }
     
     // The number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
