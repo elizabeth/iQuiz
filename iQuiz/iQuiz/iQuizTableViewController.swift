@@ -10,6 +10,7 @@ import UIKit
 
 class iQuizTableViewController: UITableViewController {
     var model = [[String: String]]()
+    var clicked : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,7 @@ class iQuizTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let questions = Questions.shared
-        model = [questions.mathematics, questions.marvel, questions.science]
+        model = Questions.shared.subjects
         self.tableView.reloadData()
     }
 
@@ -33,6 +33,15 @@ class iQuizTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // This function is called before the segue
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // get a reference to the second view controller
+//        let questionViewController = segue.destination as! QuestionViewController
+//        
+//        // set a variable in the second view controller with the data to pass
+//        questionViewController.subject = clicked
+//    }
 
     @IBAction func viewSettings(_ sender: AnyObject) {
         let alert = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: UIAlertControllerStyle.alert)
@@ -63,6 +72,13 @@ class iQuizTableViewController: UITableViewController {
         cell.icon.image = UIImage(named: set["icon"]!)
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) {
+        let set = model[indexPath.row]
+        
+        clicked = set["descr"]!
+        print(clicked)
     }
 
     /*
