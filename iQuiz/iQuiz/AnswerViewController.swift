@@ -11,6 +11,7 @@ import UIKit
 class AnswerViewController: UIViewController {
     @IBOutlet weak var question: UILabel!
     @IBOutlet weak var answer: UILabel!
+    @IBOutlet weak var icon: UIImageView!
     var score = [String: Int]()
     var questions = [[String: Any]]()
     
@@ -20,18 +21,18 @@ class AnswerViewController: UIViewController {
         let index = score["index"]!
         let quest = questions[index]
         question.text = quest["text"] as? String!
-        print(question.text)
-        let correctIndex = Int((quest["answer"] as! String))
+        let correctIndex = Int((quest["answer"] as? String)!)!
         
-        if correctIndex == score["answer"] {
-            // image to checkmark
-            
+        if correctIndex == score["answer"]! {
+            print(score["answer"]!)
+            print(correctIndex)
+            icon.image = UIImage(named: "checkmarkicon")
         } else {
-            // image to wrong
+            icon.image = UIImage(named: "xicon")
         }
         
         let answers = quest["answers"] as! [String]
-        answer.text = answers[correctIndex!] as String?
+        answer.text = answers[correctIndex] as String?
 
         // Do any additional setup after loading the view.
     }
