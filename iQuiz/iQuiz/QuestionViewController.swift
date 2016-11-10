@@ -104,17 +104,4 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
         }
     }
-    
-//    func swipe(sender: UISwipeGestureRecognizer) {
-////        if (sender.direction == .Left) {
-////            println("Swipe Left")
-////            var labelPosition = CGPointMake(self.swipeLabel.frame.origin.x - 50.0, self.swipeLabel.frame.origin.y);
-////            swipeLabel.frame = CGRectMake( labelPosition.x , labelPosition.y , self.swipeLabel.frame.size.width, self.swipeLabel.frame.size.height)
-////        }
-//        
-//        if (sender.direction == .right) {
-//            self.performSegue(withIdentifier: "toAnswer", sender: self)
-//        }
-//    }
-    
 }

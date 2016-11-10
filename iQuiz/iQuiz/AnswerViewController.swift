@@ -42,11 +42,13 @@ class AnswerViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "answerToQuestion" {
+        if segue.identifier == "answerToQuestion" || segue.identifier == "swipeAnswerToQuestion" {
+            score["index"] = score["index"]! + 1
             let questionViewController = segue.destination as! QuestionViewController
             questionViewController.questions = questions
             questionViewController.score = score
-        } else if segue.identifier == "toFinish" {
+        } else if segue.identifier == "toFinish" || segue.identifier == "swipeToFinish" {
+            score["total"] = questions.count
             let finishViewController = segue.destination as! FinishedViewController
             finishViewController.score = score
         }
@@ -54,10 +56,8 @@ class AnswerViewController: UIViewController {
     
     @IBAction func next(_ sender: AnyObject) {
         if score["hasNext"] == 1 {
-            score["index"] = score["index"]! + 1
             self.performSegue(withIdentifier: "answerToQuestion", sender: self)
         } else {
-            score["total"] = questions.count
             self.performSegue(withIdentifier: "toFinish", sender: self)
         }
     }
