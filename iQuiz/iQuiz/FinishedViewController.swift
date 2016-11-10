@@ -2,7 +2,7 @@
 //  FinishedViewController.swift
 //  iQuiz
 //
-//  Created by iGuest on 11/3/16.
+//  Created by Elizabeth on 11/3/16.
 //  Copyright © 2016 Elizabeth. All rights reserved.
 //
 
@@ -10,6 +10,7 @@ import UIKit
 
 class FinishedViewController: UIViewController {
     var score = [String: Int]()
+    var descrip = ["Nice try!", "Fantastic!"]
     @IBOutlet weak var descriptive: UILabel!
     @IBOutlet weak var totalScore: UILabel!
     
@@ -17,7 +18,16 @@ class FinishedViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        totalScore.text = "\(String(score["correct"]!)) / \(score["total"]!)"
+        let correct = score["correct"]!
+        let total = score["total"]!
+        
+        totalScore.text = "\(correct) / \(total)"
+        
+        if correct / total == 0 {
+            descriptive.text = descrip[0]
+        } else {
+            descriptive.text = descrip[1]
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,14 +45,19 @@ class FinishedViewController: UIViewController {
         self.performSegue(withIdentifier: "toMain", sender: self)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func willMove(toParentViewController parent:UIViewController?)
+    {
+        super.willMove(toParentViewController: parent)
+        
+        if (parent == nil) {
+            if let navigationController = self.navigationController {
+                var viewControllers = navigationController.viewControllers
+                let viewControllersCount = viewControllers.count
+                if (viewControllersCount > 2) {
+                    viewControllers = [viewControllers[0], viewControllers[viewControllersCount-1]]
+                    navigationController.setViewControllers(viewControllers, animated:false)
+                }
+            }
+        }
     }
-    */
-
 }

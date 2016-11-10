@@ -2,7 +2,7 @@
 //  QuestionViewController.swift
 //  iQuiz
 //
-//  Created by iGuest on 11/3/16.
+//  Created by Elizabeth on 11/3/16.
 //  Copyright © 2016 Elizabeth. All rights reserved.
 //
 
@@ -18,14 +18,17 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("swipe:"))
+//        rightSwipe.direction = .right
+//        view.addGestureRecognizer(rightSwipe)
+        
         self.picker.delegate = self
         self.picker.dataSource = self
-        
         let index = score["index"]!
+        
         outer: for i in index..<questions.count {
             if i == index {
                 question.text = questions[i]["text"] as! String?
-                score["answer"] = Int(questions[i]["answer"] as! String)
                 score["hasNext"] = 0
                 pickerAnswers = (questions[i]["answers"] as! [String]?)!
             } else {
@@ -37,8 +40,6 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 score["hasNext"] = 0
             }
         }
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,7 +47,6 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Dispose of any resources that can be recreated.
     }
 
-    
     // This function is called before the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // get a reference to the second view controller
@@ -62,11 +62,6 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return 1
     }
     
-    // The data to return for the row and component (column) that's being passed in
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return pickerAnswers[row]
-//    }
-//    
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerAnswers.count
@@ -86,7 +81,6 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
-        print(row)
         score["answer"] = row
     }
     
@@ -95,14 +89,32 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.performSegue(withIdentifier: "toAnswer", sender: self)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func willMove(toParentViewController parent:UIViewController?)
+    {
+        super.willMove(toParentViewController: parent)
+        
+        if (parent == nil) {
+            if let navigationController = self.navigationController {
+                var viewControllers = navigationController.viewControllers
+                let viewControllersCount = viewControllers.count
+                if (viewControllersCount > 2) {
+                    viewControllers = [viewControllers[0], viewControllers[viewControllersCount-1]]
+                    navigationController.setViewControllers(viewControllers, animated:false)
+                }
+            }
+        }
     }
-    */
-
+    
+//    func swipe(sender: UISwipeGestureRecognizer) {
+////        if (sender.direction == .Left) {
+////            println("Swipe Left")
+////            var labelPosition = CGPointMake(self.swipeLabel.frame.origin.x - 50.0, self.swipeLabel.frame.origin.y);
+////            swipeLabel.frame = CGRectMake( labelPosition.x , labelPosition.y , self.swipeLabel.frame.size.width, self.swipeLabel.frame.size.height)
+////        }
+//        
+//        if (sender.direction == .right) {
+//            self.performSegue(withIdentifier: "toAnswer", sender: self)
+//        }
+//    }
+    
 }

@@ -49,9 +49,9 @@ class Questions: NSObject {
                     "answer":"2",
                     "answers":[
                         "Tony Stark",
-                    "Professor X",
-                    "The X-Institute",
-                    "Erik Lensherr"
+                        "Professor X",
+                        "The X-Institute",
+                        "Erik Lensherr"
                     ]
                 ],
                 [
