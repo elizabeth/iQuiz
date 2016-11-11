@@ -16,7 +16,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="subjectIdentifier" rowHeight="83" id="JSJ-D2-Gsl" customClass="iQuizTableViewCell" customModule="iQuiz" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="83"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JSJ-D2-Gsl" id="KP8-ox-OaV">
                                     <frame key="frameInset" width="375" height="83"/>
@@ -119,12 +119,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYo-lk-Ogg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="W8V-j0-sUp">
                     <connections>
-                        <segue destination="uF7-sS-73t" kind="show" id="maf-u4-UGu"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="aXv-mt-iVN">
-                    <connections>
-                        <segue destination="SZK-JZ-cYD" kind="show" id="GkF-kD-H9v"/>
+                        <segue destination="uF7-sS-73t" kind="show" identifier="swipeToAnswer" id="maf-u4-UGu"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -189,11 +184,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IN5-Kn-bzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="za7-ls-08Z">
-                    <connections>
-                        <segue destination="SZK-JZ-cYD" kind="show" id="j1h-zY-YJo"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1018" y="134"/>
         </scene>
@@ -253,16 +243,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3d-0d-viR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="TZv-H2-Po8">
-                    <connections>
-                        <segue destination="SZK-JZ-cYD" kind="show" id="fcQ-3Q-df2"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="LIE-jp-kr6">
-                    <connections>
-                        <segue destination="SZK-JZ-cYD" kind="show" id="BRD-OK-Tm8"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="TZv-H2-Po8"/>
             </objects>
             <point key="canvasLocation" x="1761" y="134"/>
         </scene>
@@ -290,6 +271,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="maf-u4-UGu"/>
         <segue reference="qmh-1x-tQS"/>
-        <segue reference="j1h-zY-YJo"/>
+        <segue reference="GnS-Mx-zuS"/>
     </inferredMetricsTieBreakers>
 </document>

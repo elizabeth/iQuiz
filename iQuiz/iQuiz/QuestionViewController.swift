@@ -40,6 +40,18 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 score["hasNext"] = 0
             }
         }
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(sender:)))
+        rightSwipe.direction = .right
+        rightSwipe.numberOfTouchesRequired = 1
+        view.addGestureRecognizer(rightSwipe)
+    }
+    
+    func handleSwipes(sender:UISwipeGestureRecognizer) {
+        if sender.direction == .right {
+            _ = self.navigationController?.popToRootViewController(animated: true)
+
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,12 +61,12 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
     // This function is called before the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // get a reference to the second view controller
-        let answerViewController = segue.destination as! AnswerViewController
-        
-        // set a variable in the second view controller with the data to pass
-        answerViewController.questions = questions
-        answerViewController.score = score
+        if segue.identifier == "toAnswer" || segue.identifier == "swipeToAnswer" {
+            let answerViewController = segue.destination as! AnswerViewController
+            
+            answerViewController.questions = questions
+            answerViewController.score = score
+        }
     }
     
     // The number of columns of data
@@ -68,7 +80,6 @@ class QuestionViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 44))
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0

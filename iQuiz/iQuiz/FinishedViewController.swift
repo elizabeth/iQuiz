@@ -28,6 +28,17 @@ class FinishedViewController: UIViewController {
         } else {
             descriptive.text = descrip[1]
         }
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(sender:)))
+        rightSwipe.direction = .right
+        rightSwipe.numberOfTouchesRequired = 1
+        view.addGestureRecognizer(rightSwipe)
+    }
+    
+    func handleSwipes(sender:UISwipeGestureRecognizer) {
+        if sender.direction == .right {
+            _ = self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {

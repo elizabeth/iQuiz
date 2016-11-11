@@ -37,14 +37,23 @@ class AnswerViewController: UIViewController {
         leftSwipe.direction = .left
         leftSwipe.numberOfTouchesRequired = 1
         
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(sender:)))
+        rightSwipe.direction = .right
+        rightSwipe.numberOfTouchesRequired = 1
+        
         view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(rightSwipe)
     }
     
     func handleSwipes(sender:UISwipeGestureRecognizer) {
-        if score["hasNext"] == 1 {
-            self.performSegue(withIdentifier: "answerToQuestion", sender: self)
-        } else {
-            self.performSegue(withIdentifier: "toFinish", sender: self)
+        if sender.direction == .left {
+            if score["hasNext"] == 1 {
+                self.performSegue(withIdentifier: "answerToQuestion", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "toFinish", sender: self)
+            }
+        } else if sender.direction == .right {
+            _ = self.navigationController?.popToRootViewController(animated: true)
         }
     }
 
@@ -59,7 +68,7 @@ class AnswerViewController: UIViewController {
             let questionViewController = segue.destination as! QuestionViewController
             questionViewController.questions = questions
             questionViewController.score = score
-        } else if segue.identifier == "toFinish" || segue.identifier == "swipeToFinish" {
+        } else if segue.identifier == "toFinish" {
             score["total"] = questions.count
             let finishViewController = segue.destination as! FinishedViewController
             finishViewController.score = score
