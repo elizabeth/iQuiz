@@ -33,7 +33,19 @@ class AnswerViewController: UIViewController {
         let answers = quest["answers"] as! [String]
         answer.text = answers[correctIndex] as String?
 
-        // Do any additional setup after loading the view.
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(sender:)))
+        leftSwipe.direction = .left
+        leftSwipe.numberOfTouchesRequired = 1
+        
+        view.addGestureRecognizer(leftSwipe)
+    }
+    
+    func handleSwipes(sender:UISwipeGestureRecognizer) {
+        if score["hasNext"] == 1 {
+            self.performSegue(withIdentifier: "answerToQuestion", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "toFinish", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +54,7 @@ class AnswerViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "answerToQuestion" || segue.identifier == "swipeAnswerToQuestion" {
+        if segue.identifier == "answerToQuestion" {
             score["index"] = score["index"]! + 1
             let questionViewController = segue.destination as! QuestionViewController
             questionViewController.questions = questions
