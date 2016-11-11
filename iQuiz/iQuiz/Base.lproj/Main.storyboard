@@ -16,7 +16,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="subjectIdentifier" id="JSJ-D2-Gsl" customClass="iQuizTableViewCell" customModule="iQuiz" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="104"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="104"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JSJ-D2-Gsl" id="KP8-ox-OaV">
                                     <frame key="frameInset" width="375" height="103"/>
@@ -58,7 +58,7 @@
                     <navigationItem key="navigationItem" title="iQuiz" id="HVc-ZJ-gQZ">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="rYR-ny-GLB" userLabel="Settings">
                             <connections>
-                                <action selector="viewSettings:" destination="SZK-JZ-cYD" id="oHw-gE-8Sw"/>
+                                <segue destination="dOa-u2-vlR" kind="show" identifier="settingsPopover" id="JiL-tb-HhQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -70,6 +70,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tv-U3-Nv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-626.39999999999998" y="132.68365817091455"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="blv-2z-JXq">
+            <objects>
+                <viewController id="dOa-u2-vlR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U2T-Hb-wuC"/>
+                        <viewControllerLayoutGuide type="bottom" id="VxU-KR-WUZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="auo-ik-yGL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wtf-lv-VjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-372" y="798"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="aD0-xF-Lcm">
@@ -93,7 +111,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is my question?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynQ-FT-Zdv">
-                                <frame key="frameInset" minX="8.00%" minY="16.64%" width="83.73%" height="16.04%"/>
+                                <frame key="frameInset" minX="8.00%" minY="16.49%" width="83.47%" height="16.04%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>

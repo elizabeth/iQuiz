@@ -8,7 +8,7 @@
 
 import UIKit
 
-class iQuizTableViewController: UITableViewController {
+class iQuizTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     var model = [[String : Any]]()
     var questions = [[String: Any]]()
     
@@ -36,18 +36,27 @@ class iQuizTableViewController: UITableViewController {
     
     // This function is called before the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // get a reference to the second view controller
-        let questionViewController = segue.destination as! QuestionViewController
-        
-        // set a variable in the second view controller with the data to pass
-        questionViewController.questions = questions
+        if segue.identifier == "toQuestion" {
+            let questionViewController = segue.destination as! QuestionViewController
+            
+            questionViewController.questions = questions
+        } else if segue.identifier == "settingsPopover" {
+            let controller = segue.destination
+            controller.modalPresentationStyle = UIModalPresentationStyle.popover
+            controller.popoverPresentationController?.delegate = self
+            controller.preferredContentSize = CGSize(width: 320, height: 186)
+        }
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        //do som stuff from the popover
     }
 
-    @IBAction func viewSettings(_ sender: AnyObject) {
-        let alert = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
+//    @IBAction func viewSettings(_ sender: AnyObject) {
+//        let alert = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: UIAlertControllerStyle.alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+//    }
     
     // MARK: - Table view data source
 
