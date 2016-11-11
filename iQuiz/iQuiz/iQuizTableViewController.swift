@@ -49,6 +49,7 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        
         //do som stuff from the popover
     }
 
@@ -57,6 +58,9 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
 //        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
 //        self.present(alert, animated: true, completion: nil)
 //    }
+    
+    @IBAction func settingsPopover(_ sender: AnyObject) {
+    }
     
     // MARK: - Table view data source
 
