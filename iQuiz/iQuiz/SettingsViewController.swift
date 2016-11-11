@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.preferredContentSize = CGSize(width: 250, height: 200)
 
         // Do any additional setup after loading the view.
     }

@@ -40,28 +40,17 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
             let questionViewController = segue.destination as! QuestionViewController
             
             questionViewController.questions = questions
-        } else if segue.identifier == "settingsPopover" {
-            let controller = segue.destination
-            controller.modalPresentationStyle = UIModalPresentationStyle.popover
-            controller.popoverPresentationController?.delegate = self
-            controller.preferredContentSize = CGSize(width: 320, height: 186)
+        } else if segue.identifier == "viewSettings" {
+            let popoverViewController = segue.destination as! SettingsViewController
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+            popoverViewController.popoverPresentationController!.delegate = self
         }
     }
     
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        
-        //do som stuff from the popover
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 
-//    @IBAction func viewSettings(_ sender: AnyObject) {
-//        let alert = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: UIAlertControllerStyle.alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-//        self.present(alert, animated: true, completion: nil)
-//    }
-    
-    @IBAction func settingsPopover(_ sender: AnyObject) {
-    }
-    
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
@@ -126,16 +115,6 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     */
 
