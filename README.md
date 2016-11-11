@@ -1,5 +1,5 @@
 # iQuiz
-INFO 498 iOS Assignment 9
+INFO 498 iOS Assignment 9 & 10
 
 
 iQuiz: A Multiple-Choice Q-and-A application

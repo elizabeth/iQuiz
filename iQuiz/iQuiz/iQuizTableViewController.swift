@@ -9,11 +9,12 @@
 import UIKit
 
 class iQuizTableViewController: UITableViewController {
-    var model = [[String: String]]()
+    var model = [[String : Any]]()
+    var questions = [[String: Any]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.hidesBackButton = true
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -24,14 +25,22 @@ class iQuizTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let questions = Questions.shared
-        model = [questions.mathematics, questions.marvel, questions.science]
+        model = Questions.shared.data
         self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // This function is called before the segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // get a reference to the second view controller
+        let questionViewController = segue.destination as! QuestionViewController
+        
+        // set a variable in the second view controller with the data to pass
+        questionViewController.questions = questions
     }
 
     @IBAction func viewSettings(_ sender: AnyObject) {
@@ -56,13 +65,20 @@ class iQuizTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectIdentifier", for: indexPath) as! iQuizTableViewCell
 
         let set = model[indexPath.row]
-        
+
          //Configure the cell...
-        cell.subjectLabel.text = set["subject"]
-        cell.descriptionLabel.text = set["descr"]
-        cell.icon.image = UIImage(named: set["icon"]!)
+        cell.subjectLabel.text = set["title"] as! String?
+        cell.descriptionLabel.text = set["desc"] as! String?
+        cell.icon.image = UIImage(named: (set["icon"] as! String))
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        questions = model[indexPath.row]["questions"] as! [[String : Any]]
+        
+        // Start segue with index of cell clicked
+        self.performSegue(withIdentifier: "toQuestion", sender: self)
     }
 
     /*

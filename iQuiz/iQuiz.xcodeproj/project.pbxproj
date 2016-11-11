@@ -14,6 +14,9 @@
 		9DE0454A1DCC1C2D00F3A48C /* iQuizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE045491DCC1C2D00F3A48C /* iQuizTableViewController.swift */; };
 		9DE0454C1DCC273F00F3A48C /* iQuizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0454B1DCC273F00F3A48C /* iQuizTableViewCell.swift */; };
 		9DE0454E1DCC44E800F3A48C /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0454D1DCC44E800F3A48C /* Questions.swift */; };
+		9DE045501DCC582700F3A48C /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0454F1DCC582700F3A48C /* QuestionViewController.swift */; };
+		9DE045521DCC597200F3A48C /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE045511DCC597200F3A48C /* AnswerViewController.swift */; };
+		9DE045541DCC59A900F3A48C /* FinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE045531DCC59A900F3A48C /* FinishedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		9DE045491DCC1C2D00F3A48C /* iQuizTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iQuizTableViewController.swift; sourceTree = "<group>"; };
 		9DE0454B1DCC273F00F3A48C /* iQuizTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iQuizTableViewCell.swift; sourceTree = "<group>"; };
 		9DE0454D1DCC44E800F3A48C /* Questions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		9DE0454F1DCC582700F3A48C /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		9DE045511DCC597200F3A48C /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
+		9DE045531DCC59A900F3A48C /* FinishedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +68,10 @@
 				9DE045491DCC1C2D00F3A48C /* iQuizTableViewController.swift */,
 				9DE0454B1DCC273F00F3A48C /* iQuizTableViewCell.swift */,
 				9DE0454D1DCC44E800F3A48C /* Questions.swift */,
+				9DE0454F1DCC582700F3A48C /* QuestionViewController.swift */,
 				9D917E571DCB511B000FB22A /* Main.storyboard */,
+				9DE045511DCC597200F3A48C /* AnswerViewController.swift */,
+				9DE045531DCC59A900F3A48C /* FinishedViewController.swift */,
 				9D917E5A1DCB511B000FB22A /* Assets.xcassets */,
 				9D917E5C1DCB511B000FB22A /* LaunchScreen.storyboard */,
 				9D917E5F1DCB511B000FB22A /* Info.plist */,
@@ -102,6 +111,7 @@
 				TargetAttributes = {
 					9D917E4F1DCB511B000FB22A = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9Z2Z596GJL;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -142,7 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DE045541DCC59A900F3A48C /* FinishedViewController.swift in Sources */,
+				9DE045521DCC597200F3A48C /* AnswerViewController.swift in Sources */,
 				9D917E541DCB511B000FB22A /* AppDelegate.swift in Sources */,
+				9DE045501DCC582700F3A48C /* QuestionViewController.swift in Sources */,
 				9DE0454E1DCC44E800F3A48C /* Questions.swift in Sources */,
 				9DE0454C1DCC273F00F3A48C /* iQuizTableViewCell.swift in Sources */,
 				9DE0454A1DCC1C2D00F3A48C /* iQuizTableViewController.swift in Sources */,
@@ -268,6 +281,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9Z2Z596GJL;
 				INFOPLIST_FILE = iQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.uw.eduong.iQuiz;
@@ -280,6 +294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9Z2Z596GJL;
 				INFOPLIST_FILE = iQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.uw.eduong.iQuiz;
