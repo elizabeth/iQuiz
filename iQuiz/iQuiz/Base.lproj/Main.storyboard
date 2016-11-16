@@ -16,25 +16,25 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="subjectIdentifier" rowHeight="110" id="JSJ-D2-Gsl" customClass="iQuizTableViewCell" customModule="iQuiz" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="110"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JSJ-D2-Gsl" id="KP8-ox-OaV">
-                                    <frame key="frameInset" width="375" height="109"/>
+                                    <frame key="frameInset" width="375" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVW-UT-FuB">
-                                            <frame key="frameInset" minX="15" minY="11.93%" width="21.67%" height="75.23%"/>
+                                            <frame key="frameInset" minX="15" minY="11.82%" width="21.67%" height="75.46%"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qY4-hW-mLw">
-                                            <frame key="frameInset" minX="26.93%" minY="14.68%" width="68.80%" height="25.69%"/>
+                                            <frame key="frameInset" minX="26.67%" minY="13.64%" width="68.80%" height="26.36%"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCl-Ua-I9v">
-                                            <frame key="frameInset" minX="26.93%" minY="38.53%" width="68.80%" height="42.20%"/>
+                                            <frame key="frameInset" minX="26.67%" minY="37.27%" width="68.80%" height="42.73%"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
@@ -82,18 +82,43 @@
                         <viewControllerLayoutGuide type="bottom" id="VxU-KR-WUZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="auo-ik-yGL">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0W-W2-3kz">
+                                <frame key="frameInset" minX="33.60%" minY="66.57%" width="33.33%" height="4.80%"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Check Now"/>
+                                <connections>
+                                    <action selector="setURL:" destination="dOa-u2-vlR" eventType="touchUpInside" id="2eN-kp-hee"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://tednewardsandbox.site44.com/questions.json" borderStyle="roundedRect" placeholder="http://tednewardsandbox.site44.com/questions.json" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BbT-uf-Hus">
+                                <frame key="frameInset" minX="15.73%" minY="41.76%" width="69.07%" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                                <connections>
+                                    <action selector="setURL:" destination="dOa-u2-vlR" eventType="editingDidEndOnExit" id="gFS-Tj-nhT"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8S-Ib-BcP">
+                                <frame key="frameInset" minX="43.20%" minY="74.36%" width="14.13%" height="4.50%"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Close"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="250" height="200"/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="250" height="200"/>
+                    <connections>
+                        <outlet property="url" destination="BbT-uf-Hus" id="97G-c3-eb8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtf-lv-VjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-486" y="707"/>
+            <point key="canvasLocation" x="-487.19999999999999" y="705.69715142428788"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="aD0-xF-Lcm">
@@ -117,7 +142,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is my question?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynQ-FT-Zdv">
-                                <frame key="frameInset" minX="8.00%" minY="16.19%" width="83.47%" height="16.04%"/>
+                                <frame key="frameInset" minX="8.00%" minY="16.04%" width="83.47%" height="16.04%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -293,8 +318,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="maf-u4-UGu"/>
         <segue reference="TtQ-5N-3rZ"/>
-        <segue reference="GnS-Mx-zuS"/>
+        <segue reference="50r-HD-T44"/>
+        <segue reference="maf-u4-UGu"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -40,11 +40,11 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
             let questionViewController = segue.destination as! QuestionViewController
             
             questionViewController.questions = questions
-        } else if segue.identifier == "viewSettings" {
-            let popoverViewController = segue.destination as! SettingsViewController
-            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
-            popoverViewController.popoverPresentationController!.delegate = self
         }
+//        else if segue.identifier == "viewSettings" {
+//            let popoverViewController = segue.destination as! SettingsViewController
+//            popoverViewController.popoverPresentationController!.delegate = self
+//        }
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {

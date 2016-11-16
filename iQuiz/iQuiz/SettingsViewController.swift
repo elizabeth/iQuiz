@@ -9,12 +9,11 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    @IBOutlet weak var url: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.preferredContentSize = CGSize(width: 250, height: 200)
-
-        // Do any additional setup after loading the view.
+        // if has local url, use that instead
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +21,11 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func setURL(_ sender: AnyObject) {
+        // get json to use. if it is invalid/cannot get, change url back to default and show error pop up
+        // successful or not and then close
+        dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
