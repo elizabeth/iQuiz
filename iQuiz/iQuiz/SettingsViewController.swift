@@ -26,7 +26,6 @@ class SettingsViewController: UIViewController {
         // successful or not and then close
         //dismiss(animated: true, completion: nil)
         
-        
     }
 
     @IBAction func close(_ sender: AnyObject) {

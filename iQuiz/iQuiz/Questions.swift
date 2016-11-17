@@ -23,23 +23,27 @@ class Questions: NSObject {
     func loadData() {
         let local = NSKeyedUnarchiver.unarchiveObject(withFile: Questions.filePath) as? [[String: Any]]
         
-//        if local != nil {
-//            self.data = local!
-//        } else {
-            let nsUrl = NSURL(string: url)
-            let session = URLSession.shared
-            let task = session.dataTask(with: nsUrl as! URL, completionHandler: {urlData, response, error in
-                do {
-                    let jsonresult = try JSONSerialization.jsonObject(with: urlData!, options: []) as! [[String: AnyObject]]
-                    NSKeyedArchiver.archiveRootObject(jsonresult, toFile: Questions.filePath)
-                    self.data = jsonresult
-                } catch {
-                    print(error)
-                }
-            })
-            task.resume()
-
-        //}
+        if local != nil {
+            self.data = local!
+        } else {
+            retrieveData()
+        }
+    }
+    
+    func retrieveData() {
+        let nsUrl = NSURL(string: url)
+        let session = URLSession.shared
+        let task = session.dataTask(with: nsUrl as! URL, completionHandler: {urlData, response, error in
+            do {
+                let jsonresult = try JSONSerialization.jsonObject(with: urlData!, options: []) as! [[String: AnyObject]]
+                NSKeyedArchiver.archiveRootObject(jsonresult, toFile: Questions.filePath)
+                self.data = jsonresult
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+            } catch {
+                print(error)
+            }
+        })
+        task.resume()
     }
     
 //    let data = [

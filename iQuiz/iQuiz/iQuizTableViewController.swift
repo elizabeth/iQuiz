@@ -16,11 +16,7 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name:NSNotification.Name(rawValue: "load"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +44,15 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
 //        }
     }
     
+    func loadList(notification: NSNotification){
+        //load data here
+        model = Questions.shared.data
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
     }
@@ -69,7 +74,7 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
         
         let set = model[indexPath.row]
 
-         //Configure the cell...
+        //Configure the cell...
         cell.subjectLabel.text = set["title"] as! String?
         cell.descriptionLabel.text = set["desc"] as! String?
         //cell.icon.image = UIImage(named: (set["icon"] as! String))
