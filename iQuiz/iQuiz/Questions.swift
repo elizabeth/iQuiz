@@ -14,6 +14,7 @@ class Questions: NSObject {
     var data = [[String: Any]]()
     // a file named Questions in the documents directory
     private static let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "questions"
+    private static let urlFilePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "questions"
     
     override init() {
         super.init()
@@ -22,8 +23,10 @@ class Questions: NSObject {
     
     func loadData() {
         let local = NSKeyedUnarchiver.unarchiveObject(withFile: Questions.filePath) as? [[String: Any]]
+        let newUrl = NSKeyedUnarchiver.unarchiveObject(withFile: Questions.urlFilePath) as? String
         
-        if local != nil {
+        if local != nil && newUrl != nil {
+            url = newUrl!
             self.data = local!
         } else {
             retrieveData()
@@ -33,90 +36,26 @@ class Questions: NSObject {
     func retrieveData() {
         let nsUrl = NSURL(string: url)
         let session = URLSession.shared
-        let task = session.dataTask(with: nsUrl as! URL, completionHandler: {urlData, response, error in
-            do {
-                let jsonresult = try JSONSerialization.jsonObject(with: urlData!, options: []) as! [[String: AnyObject]]
-                NSKeyedArchiver.archiveRootObject(jsonresult, toFile: Questions.filePath)
-                self.data = jsonresult
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-            } catch {
-                print(error)
-            }
-        })
-        task.resume()
+        if nsUrl != nil {
+            let task = session.dataTask(with: nsUrl as! URL, completionHandler: {urlData, response, error in
+                if urlData != nil {
+                    do {
+                        let jsonresult = try JSONSerialization.jsonObject(with: urlData!, options: []) as! [[String: Any]]
+                        NSKeyedArchiver.archiveRootObject(jsonresult, toFile: Questions.filePath)
+                        NSKeyedArchiver.archiveRootObject(url, toFile: Questions.urlFilePath)
+                        self.data = jsonresult
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                    } catch {
+                        print(error)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "failedLoad"), object: nil)
+                    }
+                } else {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "failedLoad"), object: nil)
+                }
+            })
+            task.resume()
+        } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "failedLoad"), object: nil)
+        }
     }
-    
-//    let data = [
-//        [
-//            "title":"Science!",
-//            "desc":"Because SCIENCE!",
-//            "icon": "scienceicon",
-//            "questions":[
-//                [
-//                    "text":"What is fire?",
-//                    "answer":"1",
-//                    "answers":[
-//                        "One of the four classical elements",
-//                        "A magical reaction given to us by God",
-//                        "A band that hasn't yet been discovered",
-//                        "Fire! Fire! Fire! heh-heh"
-//                    ]
-//                ]
-//            ]
-//        ],
-//        [
-//            "title":"Marvel Super Heroes",
-//            "desc": "Avengers, Assemble!",
-//            "icon": "marvelicon",
-//            "questions":[
-//                [
-//                    "text":"Who is Iron Man?",
-//                    "answer":"1",
-//                    "answers":[
-//                        "Tony Stark",
-//                        "Obadiah Stane",
-//                        "A rock hit by Megadeth",
-//                        "Nobody knows"
-//                    ]
-//                ],
-//                [
-//                    "text":"Who founded the X-Men?",
-//                    "answer":"2",
-//                    "answers":[
-//                        "Tony Stark",
-//                        "Professor X",
-//                        "The X-Institute",
-//                        "Erik Lensherr"
-//                    ]
-//                ],
-//                [
-//                    "text":"How did Spider-Man get his powers?",
-//                    "answer":"1",
-//                    "answers":[
-//                        "He was bitten by a radioactive spider",
-//                        "He ate a radioactive spider",
-//                        "He is a radioactive spider",
-//                        "He looked at a radioactive spider"
-//                    ]
-//                ]
-//            ]
-//        ],
-//        [
-//            "title":"Mathematics",
-//            "desc":"Did you pass the third grade?",
-//            "icon": "mathicon",
-//            "questions":[
-//                [
-//                    "text":"What is 2+2?",
-//                    "answer":"1",
-//                    "answers":[
-//                        "4",
-//                        "22",
-//                        "An irrational number",
-//                        "Nobody knows"
-//                    ]
-//                ]
-//            ]
-//        ]
-//    ]
 }

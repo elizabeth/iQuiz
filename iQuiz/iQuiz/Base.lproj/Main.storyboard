@@ -111,12 +111,19 @@
                                     <action selector="close:" destination="dOa-u2-vlR" eventType="touchUpInside" id="LE1-nZ-cvK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter a URL to retrieve data from" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="06B-Uq-MDQ">
+                                <frame key="frameInset" minX="16.80%" minY="34.03%" width="66.93%" height="3.15%"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="url" destination="BbT-uf-Hus" id="97G-c3-eb8"/>
+                        <outlet property="newUrl" destination="BbT-uf-Hus" id="Tp2-wu-jQc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtf-lv-VjE" userLabel="First Responder" sceneMemberID="firstResponder"/>

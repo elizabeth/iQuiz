@@ -16,11 +16,13 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name:NSNotification.Name(rawValue: "load"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name:NSNotification.Name(rawValue: "load"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(failedLoad(notification:)), name:NSNotification.Name(rawValue: "failedLoad"), object: nil)
         
         model = Questions.shared.data
         self.tableView.reloadData()
@@ -38,19 +40,20 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
             
             questionViewController.questions = questions
         }
-//        else if segue.identifier == "viewSettings" {
-//            let popoverViewController = segue.destination as! SettingsViewController
-//            popoverViewController.popoverPresentationController!.delegate = self
-//        }
     }
     
-    func loadList(notification: NSNotification){
+    func loadList(notification: NSNotification) {
         //load data here
         model = Questions.shared.data
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-        
+    }
+    
+    func failedLoad(notification: NSNotification) {
+        let alert = UIAlertController(title: "Failure", message: "Invalid JSON, failed to load", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {

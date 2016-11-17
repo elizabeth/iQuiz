@@ -9,11 +9,11 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    @IBOutlet weak var url: UITextField!
+    @IBOutlet weak var newUrl: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // if has local url, use that instead
+        newUrl.text = url
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +25,9 @@ class SettingsViewController: UIViewController {
         // get json to use. if it is invalid/cannot get, change url back to default and show error pop up
         // successful or not and then close
         //dismiss(animated: true, completion: nil)
-        
+        url = newUrl.text!
+        Questions.shared.retrieveData()
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func close(_ sender: AnyObject) {
