@@ -13,7 +13,6 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
     var model = [[String : Any]]()
     var questions = [[String: Any]]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
@@ -28,7 +27,6 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
         super.viewWillAppear(animated)
         
         model = Questions.shared.data
-        
         self.tableView.reloadData()
     }
 
@@ -68,13 +66,13 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectIdentifier", for: indexPath) as! iQuizTableViewCell
-
+        
         let set = model[indexPath.row]
 
          //Configure the cell...
         cell.subjectLabel.text = set["title"] as! String?
         cell.descriptionLabel.text = set["desc"] as! String?
-        cell.icon.image = UIImage(named: (set["icon"] as! String))
+        //cell.icon.image = UIImage(named: (set["icon"] as! String))
         
         return cell
     }
