@@ -24,9 +24,15 @@ class SettingsViewController: UIViewController {
     @IBAction func setURL(_ sender: AnyObject) {
         // get json to use. if it is invalid/cannot get, change url back to default and show error pop up
         // successful or not and then close
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
+        
+        
     }
 
+    @IBAction func close(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

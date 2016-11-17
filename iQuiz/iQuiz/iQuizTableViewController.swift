@@ -8,9 +8,11 @@
 
 import UIKit
 
+var url = "http://tednewardsandbox.site44.com/questions.json"
 class iQuizTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     var model = [[String : Any]]()
     var questions = [[String: Any]]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,7 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
         super.viewWillAppear(animated)
         
         model = Questions.shared.data
+        
         self.tableView.reloadData()
     }
 
