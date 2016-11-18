@@ -14,7 +14,7 @@ class Questions: NSObject {
     var data = [[String: Any]]()
     // a file named Questions in the documents directory
     private static let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "questions"
-    private static let urlFilePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "questions"
+    private static let urlFilePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "questionsUrl"
     
     override init() {
         super.init()
