@@ -78,9 +78,10 @@ class iQuizTableViewController: UITableViewController, UIPopoverPresentationCont
         let set = model[indexPath.row]
 
         //Configure the cell...
+        //Hope the data is correctly formatted
         cell.subjectLabel.text = set["title"] as! String?
         cell.descriptionLabel.text = set["desc"] as! String?
-        //cell.icon.image = UIImage(named: (set["icon"] as! String))
+        cell.icon.image = #imageLiteral(resourceName: "genericIcon")
         
         return cell
     }
